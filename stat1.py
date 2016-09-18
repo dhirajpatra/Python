@@ -69,6 +69,7 @@ def main():
     if highestCount == 1:
         mode = numArr[0] 
     else:
+        #get max no of count from all integers
         mode = max(countArr.iteritems(), key = operator.itemgetter(1))[0]
     
     #print "total %d" % total
