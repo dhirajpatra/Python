@@ -7,6 +7,7 @@ import decimal
 import math
 import operator
 
+# main function to call the whole process
 def main():
     n = input("Enter how many number: ")
     no = raw_input("Enter numbers seperated by space: ")
@@ -15,18 +16,18 @@ def main():
     total = 0
     mid = m1 = m2 = 0
     median = 0.0
-    
+    #checking if wrong total num entered then make it perfect
     if len(numArr) != n:
         n = len(numArr)
         
     # sorting
     numArr.sort()
-    
+    #calculate total for mean
     for num in numArr:
         #print "%d" % num
         total += num       
         
-    # even or odd
+    # even no of integers or odd no
     if n % 2 == 0:
         m2 = n / 2
         m1 = m2 - 1
@@ -35,7 +36,7 @@ def main():
         if m1 == 0:
             m1 = 1
         median = (decimal.Decimal(numArr[m1]) + decimal.Decimal(numArr[m2])) / 2
-    else:
+    else: #for not even
         if n > 1:
             mid = n / 2                
         else:
@@ -44,11 +45,13 @@ def main():
     
     #print numArr[m1]
     #print numArr[m2]
-        
+    #for calculate mode    
     previous = 0
     count = 0
     highestCount = 0
+    #creating dictionery to hold integer and their correspondence no of time it occured 
     countArr = {}
+    #to get the no of same value entered 
     for num in numArr:
         if previous == num:
             count += 1 
@@ -56,6 +59,7 @@ def main():
             previous = num
             count = 1
         countArr.update({num : count})
+        #find the higest count so that if 1 or all same then need to choose lowest no
         if highestCount < count:
             highestCount = count
         
